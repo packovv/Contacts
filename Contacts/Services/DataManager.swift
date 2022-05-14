@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+var contacts: [Contact] = []
+
+func setContacts(len: Int) {
+    for _ in 0...len {
+        contacts.append(randomContact())
+    }
+}
+
+
