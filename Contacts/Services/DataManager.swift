@@ -7,12 +7,22 @@
 
 import Foundation
 
-var contacts: [Contact] = []
+//class DataManager {
+//    
+//    static let shared = DataManager()
+//    
+//    
+//    
+//    var contacts: [Contact] = []
+//
+//    private func setContacts(len: Int) {
+//        for _ in 0...len {
+//            contacts.append(generateContact())
+//        }
+//    }
+//    
+//    private init() {}
+//}
 
-func setContacts(len: Int) {
-    for _ in 0...len {
-        contacts.append(randomContact())
-    }
-}
 
 

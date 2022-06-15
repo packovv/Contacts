@@ -100,10 +100,10 @@
 		84BAFBBB27B2D79300264608 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				84BAFBB527B2D74F00264608 /* ContactsViewController.swift */,
 				84A948AE282FBA5C002E0612 /* TabBarViewController.swift */,
-				84BAFBB727B2D76600264608 /* PersonsViewController.swift */,
+				84BAFBB527B2D74F00264608 /* ContactsViewController.swift */,
 				84BAFBB927B2D78C00264608 /* ContactDetailsViewController.swift */,
+				84BAFBB727B2D76600264608 /* PersonsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

@@ -7,63 +7,54 @@
 
 import Foundation
 
-func randomContact() -> Contact {
-    var contactTemp: Contact = Contact.init()
+func randomName() -> String {
+    let lowLetters: [Character] = ["a","b","c","d","e","f","g","h","i","j","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    let highLetters: [Character] = ["A","B","C","D","E","F","G","H","I","J","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     
-    contactTemp.name = randomName()
-    contactTemp.surname = randomName()
-    contactTemp.phoneNumber = randomPhoneNumber()
-    contactTemp.phoneNumber = randomEmail()
-    
-    return contactTemp
-}
-
-private func randomName() -> String {
-    let lowLetters: NSString = "abcdefghijlmnopqrstuvwxyz"
-    let highLetters: NSString = "ABCDEFGHIJLMNOPQRSTUVWXYZ"
-    
-    let C = Array(arrayLiteral: highLetters)
-    let c = Array(arrayLiteral: lowLetters)
-    
-    let random = Int.random(in: 4...10)
+    let random = Int.random(in: 3...9)
     
     var name: String = ""
     
-    for n in (1...random) {
-        if n == 1 {
-            name.append(C[Int(arc4random()) % C.count] as String)
+    for n in (0...random) {
+        if n == 0 {
+            name.append(highLetters[Int.random(in: 0...24)])
             continue
         }
-        name.append(c[Int(arc4random()) % c.count] as String)
+        name.append(lowLetters[Int.random(in: 0...24)])
     }
     return name
 }
 
-private func randomPhoneNumber() -> String {
-    let numbers: NSString = "0123456789"
-    
-    let c = Array(arrayLiteral: numbers)
+func randomPhoneNumber() -> String {
+    let numbers: [Character] = ["0","1","2","3","4","5","6","7","8","9"]
     
     var phoneNumber: String = "+7"
     
-    for _ in 1...9 {
-        phoneNumber.append(c[Int(arc4random()) % c.count] as String)
+    for n in 0...9 {
+        switch n {
+        case 0:
+            phoneNumber.append("(")
+        case 3:
+            phoneNumber.append(")")
+        case 6, 8:
+            phoneNumber.append("-")
+        default: break
+        }
+        phoneNumber.append(numbers[Int.random(in: 0...9)])
     }
     
     return phoneNumber
 }
 
-private func randomEmail() -> String{
-    let symbols: NSString = "abcdefghijlmnopqrstuvwxyz0123456789"
+func randomEmail() -> String{
+    let lowLetters: [Character] = ["a","b","c","d","e","f","g","h","i","j","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"]
     
-    let c = Array(arrayLiteral: symbols)
-    
-    let random = Int.random(in: 4...10)
+    let random = Int.random(in: 4...8)
     
     var email: String = ""
     
     for _ in (1...random) {
-        email.append(c[Int(arc4random()) % c.count] as String)
+        email.append(lowLetters[Int.random(in: 0...34)])
     }
     
     email.append("@mail.com")
