@@ -14,9 +14,6 @@ class ContactsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getContactList()
-        APIManager.shared.getUsers { users in
-            print(users.count)
-        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
