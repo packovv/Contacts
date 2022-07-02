@@ -16,10 +16,10 @@ struct Contact {
     var fullName: String { "\(name) \(surname)" }
     
     init() {
-        self.name = randomName()
-        self.surname = randomName()
-        self.phoneNumber = randomPhoneNumber()
-        self.email = randomEmail()
+        self.name = Randomizer.shared.randomName()
+        self.surname = Randomizer.shared.randomName()
+        self.phoneNumber = Randomizer.shared.randomPhoneNumber()
+        self.email = Randomizer.shared.randomEmail()
     }
     
     init(name: String, surname: String, phoneNumber: String, email: String) {

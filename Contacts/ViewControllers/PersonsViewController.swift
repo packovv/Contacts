@@ -9,15 +9,14 @@ import UIKit
 
 class PersonsViewController: UITableViewController {
 
-    private var thisUsers: Users!
+    private var thisUsers: Users = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIManager.shared.getUsers { users in
-            self.thisUsers = users
-            print(users.count)
-            for user in users {
-                print(user.name)
+        APIManager.shared.getUsers { [weak self] users in
+            DispatchQueue.main.async {
+                self?.thisUsers = users
+                self?.tableView.reloadData()
             }
         }
     }
