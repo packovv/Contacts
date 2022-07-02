@@ -8,22 +8,18 @@
 import UIKit
 
 class ContactsViewController: UITableViewController {
+    
     var contactList: [Contact] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getContactList()
+        APIManager.shared.getUsers { users in
+            print(users.count)
+        }
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return contactList.count
     }
 
