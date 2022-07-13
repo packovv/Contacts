@@ -29,18 +29,3 @@ struct Contact {
         self.email = email
     }
 }
-
-//extension Contact {
-//    
-//    func generateContact() -> Contact {
-//        let contact: Contact = Contact.init(name: randomName(), surname: randomName(), phoneNumber: randomPhoneNumber(), email: randomEmail())
-//        return contact
-//    }
-//}
-
-enum contactTypes {
-    case name
-    case surname
-    case phoneNumber
-    case email
-}

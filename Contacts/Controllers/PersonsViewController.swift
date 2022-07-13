@@ -36,8 +36,6 @@ class PersonsViewController: UITableViewController {
         var content = cell.defaultContentConfiguration()
         content.text = user.name
         content.secondaryText = user.email
-//        content.text = "1"
-//        content.secondaryText = "11"
         cell.contentConfiguration = content
         
         return cell

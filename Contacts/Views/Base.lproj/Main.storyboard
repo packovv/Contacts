@@ -150,6 +150,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="qDk-5g-xlb"/>
                     <connections>
+                        <outlet property="contactImage" destination="Xyj-kK-hTM" id="7Mb-c1-UxO"/>
                         <outlet property="emailLabel" destination="Eev-Ra-69j" id="HhP-xL-HRc"/>
                         <outlet property="nameLabel" destination="6I2-dN-IXQ" id="XqN-eZ-5bx"/>
                         <outlet property="phoneLabel" destination="GIC-q9-GBF" id="VwB-GL-WSG"/>

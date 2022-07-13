@@ -32,17 +32,16 @@ class ContactsViewController: UITableViewController {
         return cell
     }
     
-    private func getContactList() {
-        for _ in 0...20 {
-            self.contactList.append(Contact.init())
-        }
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let vc = segue.destination as? ContactDetailsViewController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         let contact = contactList[indexPath.row]
         vc.contact = contact
-        //vc.contact = sender as? Contact
+    }
+    
+    private func getContactList() {
+        for _ in 0...20 {
+            self.contactList.append(Contact.init())
+        }
     }
 }

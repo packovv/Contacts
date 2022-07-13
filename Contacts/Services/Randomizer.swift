@@ -10,10 +10,11 @@ import Foundation
 class Randomizer {
     static let shared = Randomizer()
     
+    private let numbers: [Character] = ["0","1","2","3","4","5","6","7","8","9"]
+    private let lowLetters: [Character] = ["a","b","c","d","e","f","g","h","i","j","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    private let highLetters: [Character] = ["A","B","C","D","E","F","G","H","I","J","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    
     func randomName() -> String {
-        let lowLetters: [Character] = ["a","b","c","d","e","f","g","h","i","j","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-        let highLetters: [Character] = ["A","B","C","D","E","F","G","H","I","J","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-        
         let random = Int.random(in: 3...9)
         
         var name: String = ""
@@ -29,8 +30,6 @@ class Randomizer {
     }
 
     func randomPhoneNumber() -> String {
-        let numbers: [Character] = ["0","1","2","3","4","5","6","7","8","9"]
-        
         var phoneNumber: String = "+7"
         
         for n in 0...9 {
@@ -45,21 +44,18 @@ class Randomizer {
             }
             phoneNumber.append(numbers[Int.random(in: 0...9)])
         }
-        
         return phoneNumber
     }
 
     func randomEmail() -> String{
-        let lowLetters: [Character] = ["a","b","c","d","e","f","g","h","i","j","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","0","1","2","3","4","5","6","7","8","9"]
-        
+        let symbols = numbers + lowLetters + highLetters
         let random = Int.random(in: 4...8)
         
         var email: String = ""
         
         for _ in (1...random) {
-            email.append(lowLetters[Int.random(in: 0...34)])
+            email.append(symbols[Int.random(in: 0...34)])
         }
-        
         email.append("@mail.com")
         
         return email
