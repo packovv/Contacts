@@ -16,10 +16,10 @@ struct Contact {
     var fullName: String { "\(name) \(surname)" }
     
     init() {
-        self.name = randomName()
-        self.surname = randomName()
-        self.phoneNumber = randomPhoneNumber()
-        self.email = randomEmail()
+        self.name = Randomizer.shared.randomName()
+        self.surname = Randomizer.shared.randomName()
+        self.phoneNumber = Randomizer.shared.randomPhoneNumber()
+        self.email = Randomizer.shared.randomEmail()
     }
     
     init(name: String, surname: String, phoneNumber: String, email: String) {
@@ -28,19 +28,4 @@ struct Contact {
         self.phoneNumber = phoneNumber
         self.email = email
     }
-}
-
-//extension Contact {
-//    
-//    func generateContact() -> Contact {
-//        let contact: Contact = Contact.init(name: randomName(), surname: randomName(), phoneNumber: randomPhoneNumber(), email: randomEmail())
-//        return contact
-//    }
-//}
-
-enum contactTypes {
-    case name
-    case surname
-    case phoneNumber
-    case email
 }

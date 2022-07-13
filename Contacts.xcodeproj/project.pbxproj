@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8401B00628708955000B50B3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8401B00528708955000B50B3 /* APIManager.swift */; };
+		8401B0082870898F000B50B3 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8401B0072870898F000B50B3 /* Users.swift */; };
 		84A948AD282FAF9A002E0612 /* Randomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A948AC282FAF9A002E0612 /* Randomizer.swift */; };
-		84A948AF282FBA5C002E0612 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A948AE282FBA5C002E0612 /* TabBarViewController.swift */; };
 		84BAFBA027B2D6E800264608 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BAFB9F27B2D6E800264608 /* AppDelegate.swift */; };
 		84BAFBA227B2D6E800264608 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BAFBA127B2D6E800264608 /* SceneDelegate.swift */; };
 		84BAFBA727B2D6E800264608 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BAFBA527B2D6E800264608 /* Main.storyboard */; };
@@ -19,11 +20,13 @@
 		84BAFBBA27B2D78C00264608 /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BAFBB927B2D78C00264608 /* ContactDetailsViewController.swift */; };
 		84BAFBBD27B2D7B900264608 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BAFBBC27B2D7B900264608 /* DataManager.swift */; };
 		84BAFBC027B2D7D800264608 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BAFBBF27B2D7D800264608 /* Contact.swift */; };
+		84F1A268287EE71B006F2FB3 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1A267287EE71B006F2FB3 /* Images.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8401B00528708955000B50B3 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		8401B0072870898F000B50B3 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		84A948AC282FAF9A002E0612 /* Randomizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Randomizer.swift; sourceTree = "<group>"; };
-		84A948AE282FBA5C002E0612 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		84BAFB9C27B2D6E800264608 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BAFB9F27B2D6E800264608 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84BAFBA127B2D6E800264608 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		84BAFBB927B2D78C00264608 /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
 		84BAFBBC27B2D7B900264608 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		84BAFBBF27B2D7D800264608 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		84F1A267287EE71B006F2FB3 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +73,10 @@
 			isa = PBXGroup;
 			children = (
 				84BAFBB327B2D6FA00264608 /* App */,
+				84BAFBBB27B2D79300264608 /* Controllers */,
 				84BAFBC127B2D7DD00264608 /* Models */,
 				84BAFBBE27B2D7BD00264608 /* Services */,
-				84BAFBBB27B2D79300264608 /* ViewControllers */,
-				84BAFBB427B2D70800264608 /* Storyboards */,
+				84BAFBB427B2D70800264608 /* Views */,
 				84BAFBA827B2D6EA00264608 /* Assets.xcassets */,
 				84BAFBAD27B2D6EA00264608 /* Info.plist */,
 			);
@@ -88,29 +92,29 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		84BAFBB427B2D70800264608 /* Storyboards */ = {
+		84BAFBB427B2D70800264608 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				84BAFBA527B2D6E800264608 /* Main.storyboard */,
 				84BAFBAA27B2D6EA00264608 /* LaunchScreen.storyboard */,
+				84BAFBA527B2D6E800264608 /* Main.storyboard */,
 			);
-			path = Storyboards;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		84BAFBBB27B2D79300264608 /* ViewControllers */ = {
+		84BAFBBB27B2D79300264608 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				84A948AE282FBA5C002E0612 /* TabBarViewController.swift */,
 				84BAFBB527B2D74F00264608 /* ContactsViewController.swift */,
 				84BAFBB927B2D78C00264608 /* ContactDetailsViewController.swift */,
 				84BAFBB727B2D76600264608 /* PersonsViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		84BAFBBE27B2D7BD00264608 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8401B00528708955000B50B3 /* APIManager.swift */,
 				84BAFBBC27B2D7B900264608 /* DataManager.swift */,
 				84A948AC282FAF9A002E0612 /* Randomizer.swift */,
 			);
@@ -121,6 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				84BAFBBF27B2D7D800264608 /* Contact.swift */,
+				8401B0072870898F000B50B3 /* Users.swift */,
+				84F1A267287EE71B006F2FB3 /* Images.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,14 +203,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BAFBBA27B2D78C00264608 /* ContactDetailsViewController.swift in Sources */,
+				84F1A268287EE71B006F2FB3 /* Images.swift in Sources */,
 				84BAFBBD27B2D7B900264608 /* DataManager.swift in Sources */,
+				8401B00628708955000B50B3 /* APIManager.swift in Sources */,
 				84BAFBA027B2D6E800264608 /* AppDelegate.swift in Sources */,
 				84BAFBA227B2D6E800264608 /* SceneDelegate.swift in Sources */,
-				84A948AF282FBA5C002E0612 /* TabBarViewController.swift in Sources */,
 				84BAFBB627B2D74F00264608 /* ContactsViewController.swift in Sources */,
 				84BAFBB827B2D76600264608 /* PersonsViewController.swift in Sources */,
 				84A948AD282FAF9A002E0612 /* Randomizer.swift in Sources */,
 				84BAFBC027B2D7D800264608 /* Contact.swift in Sources */,
+				8401B0082870898F000B50B3 /* Users.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
