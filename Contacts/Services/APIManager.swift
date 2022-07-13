@@ -13,9 +13,13 @@ enum APIType {
     case getUsers
     case getPosts
     case getAlbums
+    case getImage
     
     var baseURL: String {
         return "https://jsonplaceholder.typicode.com/"
+    }
+    var imageURL: String {
+        return "https://picsum.photos/280/280"
     }
     
     var header: [String: String] {
@@ -33,6 +37,7 @@ enum APIType {
         case .getUsers: return "users"
         case .getPosts: return "posts"
         case .getAlbums: return "albums"
+        case .getImage: return "image"
         }
     }
     
@@ -49,6 +54,14 @@ enum APIType {
             request.httpMethod = "GET"
             return request
         }
+    }
+    
+    var imageRequest: URLRequest {
+        let url = URL(string: path, relativeTo: URL(string: imageURL)!)!
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = header
+        request.httpMethod = "GET"
+        return request
     }
 }
 
@@ -68,7 +81,7 @@ class APIManager {
     }
     
     func getImage(complition: @escaping (UIImage) -> Void) {
-        
+
         let api = "https://picsum.photos/280/280"
         guard let url = URL(string: api) else { fatalError("doesn't get image from api") }
         let session = URLSession(configuration: .default)
@@ -78,7 +91,7 @@ class APIManager {
             } else {
                 complition(UIImage(systemName: "bookmark")!)
             }
-            
+
         }
         task.resume()
     }

@@ -9,21 +9,18 @@ import UIKit
 
 class PersonsViewController: UITableViewController {
 
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .large
+        return activityIndicator
+    }()
+    
     private var thisUsers: Users = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIManager.shared.getUsers { [weak self] users in
-            DispatchQueue.main.async {
-                self?.thisUsers = users
-                self?.tableView.reloadData()
-            }
-        }
+        getUsers()
     }
-
-    // MARK: - Table view data source
-
-
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return thisUsers.count
@@ -40,15 +37,35 @@ class PersonsViewController: UITableViewController {
         
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
-    */
-
+    
+    private func setupActivityIndicator() {
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+    }
+    
+    private func startActivityIndicator() {
+        activityIndicator.startAnimating()
+        view.isUserInteractionEnabled = false
+    }
+    
+    private func stopActivityIndicator() {
+        activityIndicator.stopAnimating()
+        view.isUserInteractionEnabled = true
+    }
+    
+    private func getUsers() {
+        startActivityIndicator()
+        APIManager.shared.getUsers { [weak self] users in
+            DispatchQueue.main.async {
+                self?.thisUsers = users
+                self?.tableView.reloadData()
+                self?.stopActivityIndicator()
+            }
+        }
+    }
 }
