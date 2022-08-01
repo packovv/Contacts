@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Если используешь такой инам, то уж лучше сразу затащить Moya в проект, там такая же структура и сможешь избежать лишнего кода
 enum APIType {
     case login
     case getUsers
@@ -42,6 +43,7 @@ enum APIType {
     }
     
     var request: URLRequest {
+        // Может, стоит завести отдельную константу для URL(string: baseURL), чтобы не было вложенности и было комфортней читать?
         let url = URL(string: path, relativeTo: URL(string: baseURL)!)!
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = header
@@ -65,6 +67,7 @@ enum APIType {
     }
 }
 
+// Сделай класс final, чтобы от него нельзя было наследоваться
 class APIManager {
     static let shared = APIManager()
     
@@ -79,14 +82,17 @@ class APIManager {
         }
         task.resume()
     }
-    
+
+    // В целом для картинок лучше сразу поставить Kingfisher например, потому что там решено очень много проблем, которые обычно решаются костылями, например здесь не будет кэширования картинок, а это не очень хорошо
     func getImage(complition: @escaping (UIImage) -> Void) {
 
+        // Для ссылок лучше завести отдельную структуру а-ля URLFactory, из которой подтянешь нужные ссылки
         let api = "https://picsum.photos/280/280"
         guard let url = URL(string: api) else { fatalError("doesn't get image from api") }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, error in
             if let data = data, error == nil {
+                // Можно ли как-то избавиться от force unwrapping?
                 complition(UIImage(data: data)!)
             } else {
                 complition(UIImage(systemName: "bookmark")!)

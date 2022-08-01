@@ -7,6 +7,8 @@
 
 import Foundation
 
+// 1. Я бы убрал этот класс совсем, достаточно будет загрузки элементов из сети, здесь много моментов, к которым могут доебаться - лучше не давать лишнего повода
+// 2. Если оставляешь - сделай класс final class, чтобы запретить наследование от него
 class Randomizer {
     static let shared = Randomizer()
     
@@ -18,7 +20,9 @@ class Randomizer {
         let random = Int.random(in: 3...9)
         
         var name: String = ""
-        
+
+        // Лучше избегать циклов, может, можно написать в функциональном стиле?
+        // Очевидно ли что такое n?
         for n in (0...random) {
             if n == 0 {
                 name.append(highLetters[Int.random(in: 0...24)])
@@ -31,8 +35,10 @@ class Randomizer {
 
     func randomPhoneNumber() -> String {
         var phoneNumber: String = "+7"
-        
+
+        // Давай переименуем n во что-то более очевидное и понятное?
         for n in 0...9 {
+            // По-хорошему можно вынести весь switch в отдельный метод и дергать его в цикле, передавая параметр n, чтобы не запутаться во вложенности блоков кода
             switch n {
             case 0:
                 phoneNumber.append("(")
@@ -42,6 +48,7 @@ class Randomizer {
                 phoneNumber.append("-")
             default: break
             }
+            // Раз уж мы каждый раз снова проходим цикл, то стоит Int.random(in: 0...9) вынести в отдельную переменную внутри цикла, чтобы вычисления не были внутри сабскрипта массива, лучше ему просто передавать готовое число
             phoneNumber.append(numbers[Int.random(in: 0...9)])
         }
         return phoneNumber
@@ -54,6 +61,7 @@ class Randomizer {
         var email: String = ""
         
         for _ in (1...random) {
+            // Также, как в методе выше с random
             email.append(symbols[Int.random(in: 0...34)])
         }
         email.append("@mail.com")

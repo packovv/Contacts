@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Стоит написать final class
 class PersonsViewController: UITableViewController {
 
     private let activityIndicator: UIActivityIndicatorView = {
@@ -22,6 +23,7 @@ class PersonsViewController: UITableViewController {
         getUsers()
     }
 
+    // Можно не писать return
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return thisUsers.count
     }
@@ -37,7 +39,8 @@ class PersonsViewController: UITableViewController {
         
         return cell
     }
-    
+
+    // Можно не писать return
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }

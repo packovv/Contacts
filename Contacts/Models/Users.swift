@@ -7,6 +7,8 @@
 
 import Foundation
 
+// А почему все св-ва опциональные? Это в API так задумано?
+
 struct User: Codable {
     let id: Int?
     let name, username, email: String?
@@ -28,4 +30,5 @@ struct Company: Codable {
     let name, catchPhrase, bs: String?
 }
 
+// Необязательно, можно потом и [User], в этом нет ничего такого
 typealias Users = [User]

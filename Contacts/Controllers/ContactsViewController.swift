@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Стоит написать final class
 class ContactsViewController: UITableViewController {
         
     private let activityIndicator: UIActivityIndicatorView = {
@@ -24,8 +25,9 @@ class ContactsViewController: UITableViewController {
         setImages()
     }
 
+    // В новом Swift если в блоке пишется только одна строка и метод что-то возвращает, то можно не писать return
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contactList.count
+        contactList.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,6 +54,7 @@ class ContactsViewController: UITableViewController {
 extension ContactsViewController {
     
     private func setupActivityIndicator() {
+        // Мне кажется, что здесь self необязательно писать, потому что у тебя однозначно понятно откуда берется view, как думаешь?
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         view.addSubview(activityIndicator)

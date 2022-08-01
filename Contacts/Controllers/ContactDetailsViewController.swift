@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Стоит написать final class
 class ContactDetailsViewController: UIViewController {
 
     @IBOutlet weak var contactImage: UIImageView!
@@ -14,8 +15,10 @@ class ContactDetailsViewController: UIViewController {
     @IBOutlet weak var surnameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    
+
+    // Не будет ли здесь когда-нибудь краша из-за worce unwrapping?
     var contact: Contact!
+    // Непонятно что несет в себе название переменной, может, переименовать в какой-то более очевидный вариант?
     var thisImage: UIImage = UIImage(systemName: "bookmark")!
     
     override func viewDidLoad() {

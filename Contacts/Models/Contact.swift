@@ -21,11 +21,4 @@ struct Contact {
         self.phoneNumber = Randomizer.shared.randomPhoneNumber()
         self.email = Randomizer.shared.randomEmail()
     }
-    
-    init(name: String, surname: String, phoneNumber: String, email: String) {
-        self.name = name
-        self.surname = surname
-        self.phoneNumber = phoneNumber
-        self.email = email
-    }
 }
