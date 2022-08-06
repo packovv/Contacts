@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactDetailsViewController: UIViewController {
+final class ContactDetailsViewController: UIViewController {
 
     @IBOutlet weak var contactImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -16,7 +16,7 @@ class ContactDetailsViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     
     var contact: Contact!
-    var thisImage: UIImage = UIImage(systemName: "bookmark")!
+    var image: UIImage = UIImage(systemName: "bookmark")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class ContactDetailsViewController: UIViewController {
     }
     
     private func setUI() {
-        contactImage.image = thisImage
+        contactImage.image = image
         nameLabel.text = contact.name
         surnameLabel.text = contact.surname
         phoneLabel.text = contact.phoneNumber

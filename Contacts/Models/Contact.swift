@@ -19,7 +19,7 @@ struct Contact {
         self.name = Randomizer.shared.randomName()
         self.surname = Randomizer.shared.randomName()
         self.phoneNumber = Randomizer.shared.randomPhoneNumber()
-        self.email = Randomizer.shared.randomEmail()
+        self.email = (name + surname).lowercased() + "@mail.com"
     }
     
     init(name: String, surname: String, phoneNumber: String, email: String) {

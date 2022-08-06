@@ -27,7 +27,7 @@ class PersonsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "personsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: PersonsViewCell.reuseId, for: indexPath) as! PersonsViewCell
 
         let user = thisUsers[indexPath.row]
         var content = cell.defaultContentConfiguration()
