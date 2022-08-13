@@ -8,7 +8,7 @@
 import UIKit
 
 class PersonsViewController: UITableViewController {
-
+    
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = .large
@@ -19,7 +19,7 @@ class PersonsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUsers()
+        setUI()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,6 +41,9 @@ class PersonsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+}
+
+extension PersonsViewController {
     
     private func setupActivityIndicator() {
         activityIndicator.center = self.view.center
@@ -67,5 +70,10 @@ class PersonsViewController: UITableViewController {
                 self?.stopActivityIndicator()
             }
         }
+    }
+    
+    func setUI() {
+        self.tableView.register(PersonsViewCell.self, forCellReuseIdentifier: PersonsViewCell.reuseId)
+        getUsers()
     }
 }

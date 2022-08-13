@@ -20,8 +20,7 @@ class ContactsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getContactList()
-        setImages()
+        setUI()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +28,7 @@ class ContactsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ContactsViewCell.reuseId, for: indexPath) as! ContactsViewCell
 
         let contact = contactList[indexPath.row]
         var content = cell.defaultContentConfiguration()
@@ -83,5 +82,11 @@ extension ContactsViewController {
                 }
             }
         }
+    }
+    
+    private func setUI() {
+        self.tableView.register(ContactsViewCell.self, forCellReuseIdentifier: ContactsViewCell.reuseId)
+        getContactList()
+        setImages()
     }
 }
