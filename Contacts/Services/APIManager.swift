@@ -68,11 +68,11 @@ enum APIType {
 final class APIManager {
     static let shared = APIManager()
     
-    func getUsers(complition: @escaping (Users) -> Void) {
+    func getUsers(complition: @escaping (Persons) -> Void) {
         let request = APIType.getUsers.request
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data, let users = try? JSONDecoder().decode(Users.self, from: data) {
-                complition(users)
+            if let data = data, let persons = try? JSONDecoder().decode(Persons.self, from: data) {
+                complition(persons)
             } else {
                 complition([])
             }
