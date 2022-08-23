@@ -34,7 +34,7 @@
                             <outlet property="delegate" destination="2vz-4t-oCi" id="Ao0-5d-fPF"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="List" image="person.fill" catalog="system" id="htj-Po-yfA"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" image="magazine.fill" catalog="system" id="htj-Po-yfA"/>
                     <navigationItem key="navigationItem" title="Root View Controller" id="5KP-fJ-Ilh"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSr-LS-dNf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -161,7 +161,7 @@
             </objects>
             <point key="canvasLocation" x="3617.3913043478265" y="77.678571428571431"/>
         </scene>
-        <!--Full List-->
+        <!--Persons-->
         <scene sceneID="YSf-8q-aZg">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="3J0-vR-pmA" customClass="PersonsViewController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
@@ -200,7 +200,7 @@
                             <outlet property="delegate" destination="3J0-vR-pmA" id="bKX-le-g1Q"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Full List" image="magazine.fill" catalog="system" id="kJJ-vk-WHg"/>
+                    <tabBarItem key="tabBarItem" title="Persons" image="person.fill" catalog="system" id="kJJ-vk-WHg"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7pb-wT-KfH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -215,7 +215,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2vQ-fh-Vef">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="2vz-4t-oCi" kind="relationship" relationship="viewControllers" id="aEk-Cd-kDf"/>

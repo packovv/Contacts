@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable {
+struct Person: Codable {
     let id: Int
     let name, username, email: String
     let address: Address
@@ -28,4 +28,4 @@ struct Company: Codable {
     let name, catchPhrase, bs: String
 }
 
-typealias Users = [User]
+typealias Persons = [Person]

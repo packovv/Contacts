@@ -15,24 +15,24 @@ class PersonsViewController: UITableViewController {
         return activityIndicator
     }()
     
-    private var thisUsers: Users = []
+    private var persons: Persons = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUsers()
+        fetchPersons()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return thisUsers.count
+        return persons.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PersonsViewCell.reuseId, for: indexPath) as! PersonsViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PersonsViewCell.reuseId, for: indexPath)
 
-        let user = thisUsers[indexPath.row]
+        let person = persons[indexPath.row]
         var content = cell.defaultContentConfiguration()
-        content.text = user.name
-        content.secondaryText = user.email
+        content.text = person.name
+        content.secondaryText = person.email
         cell.contentConfiguration = content
         
         return cell
@@ -58,11 +58,11 @@ class PersonsViewController: UITableViewController {
         view.isUserInteractionEnabled = true
     }
     
-    private func getUsers() {
+    private func fetchPersons() {
         startActivityIndicator()
-        APIManager.shared.getUsers { [weak self] users in
+        APIManager.shared.getUsers { [weak self] persons in
             DispatchQueue.main.async {
-                self?.thisUsers = users
+                self?.persons = persons
                 self?.tableView.reloadData()
                 self?.stopActivityIndicator()
             }
