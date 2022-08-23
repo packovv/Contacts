@@ -28,8 +28,9 @@ class TabBarController: UITabBarController {
 
     func setupVCs() {
         viewControllers = [
-            createNavigaionController(for: ContactsViewController(), title: NSLocalizedString("Contacts", comment: ""), image: UIImage(systemName: "person.fill")!),
-            createNavigaionController(for: PersonsViewController(), title: NSLocalizedString("Persons", comment: ""), image: UIImage(systemName: "magazine.fill")!)
+            createNavigaionController(for: ContactsViewController(), title: NSLocalizedString("Contacts", comment: ""), image: UIImage(systemName: "magazine.fill")!),
+            createNavigaionController(for: PersonsViewController(), title: NSLocalizedString("Persons", comment: ""), image:
+                UIImage(systemName: "person.fill")!)
         ]
     }
     
