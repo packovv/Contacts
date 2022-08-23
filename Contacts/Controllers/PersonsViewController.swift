@@ -19,7 +19,7 @@ class PersonsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchPersons()
+        setUI()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,6 +74,6 @@ extension PersonsViewController {
     
     func setUI() {
         self.tableView.register(PersonsViewCell.self, forCellReuseIdentifier: PersonsViewCell.reuseId)
-        getUsers()
+            fetchPersons()
     }
 }

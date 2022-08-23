@@ -9,10 +9,10 @@ import UIKit
 
 class PersonsViewCell: UITableViewCell {
 
-    @IBOutlet weak var idLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+//    @IBOutlet weak var idLabel: UILabel!
+//    @IBOutlet weak var nameLabel: UILabel!
+//    @IBOutlet weak var usernameLabel: UILabel!
+//    @IBOutlet weak var emailLabel: UILabel!
     
     static let reuseId: String = "personsCell"
     
@@ -27,12 +27,12 @@ class PersonsViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCell(id: String, name: String, username:
-                    String, email: String) {
-        idLabel.text = id
-        nameLabel.text = name
-        usernameLabel.text = username
-        emailLabel.text = email
-    }
+//    func configCell(id: String, name: String, username:
+//                    String, email: String) {
+//        idLabel.text = id
+//        nameLabel.text = name
+//        usernameLabel.text = username
+//        emailLabel.text = email
+//    }
 
 }
