@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class PersonsViewController: UITableViewController {
     
@@ -26,10 +27,10 @@ class PersonsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: PersonsViewCell.reuseId, for: indexPath)
 
         let person = persons[indexPath.row]
-//        var content = cell.defaultContentConfiguration()
-//        content.text = person.name
-//        content.secondaryText = person.email
-//        cell.contentConfiguration = content
+        var content = cell.defaultContentConfiguration()
+        content.text = person.name
+        content.secondaryText = person.email
+        cell.contentConfiguration = content
         
         return cell
     }

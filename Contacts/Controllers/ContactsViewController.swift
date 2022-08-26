@@ -29,11 +29,11 @@ class ContactsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ContactsViewCell.reuseId, for: indexPath) as! ContactsViewCell
 
         let contact = contactList[indexPath.row]
-//        var content = cell.defaultContentConfiguration()
-//        content.text = contact.surname
-//        content.secondaryText = contact.name
-//
-//        cell.contentConfiguration = content
+        var content = cell.defaultContentConfiguration()
+        content.text = contact.surname
+        content.secondaryText = contact.name
+        cell.contentConfiguration = content
+        
         return cell
     }
     
@@ -53,7 +53,7 @@ class ContactsViewController: UITableViewController {
 extension ContactsViewController {
     
     private func getContactList() {
-        for _ in 0...10 {
+        for _ in 0...20 {
             self.contactList.append(Contact.init())
         }
     }
