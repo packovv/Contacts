@@ -9,11 +9,7 @@ import UIKit
 
 class PersonsViewController: UITableViewController {
     
-    private let activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.style = .large
-        return activityIndicator
-    }()
+    private let activityIndicator = ActivityIndicatorView()
     
     private var persons: Persons = []
     
@@ -30,10 +26,10 @@ class PersonsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: PersonsViewCell.reuseId, for: indexPath)
 
         let person = persons[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = person.name
-        content.secondaryText = person.email
-        cell.contentConfiguration = content
+//        var content = cell.defaultContentConfiguration()
+//        content.text = person.name
+//        content.secondaryText = person.email
+//        cell.contentConfiguration = content
         
         return cell
     }
@@ -45,29 +41,13 @@ class PersonsViewController: UITableViewController {
 
 extension PersonsViewController {
     
-    private func setupActivityIndicator() {
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-    }
-    
-    private func startActivityIndicator() {
-        activityIndicator.startAnimating()
-        view.isUserInteractionEnabled = false
-    }
-    
-    private func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
-        view.isUserInteractionEnabled = true
-    }
-    
     private func fetchPersons() {
-        startActivityIndicator()
+        activityIndicator.startActivityIndicator(view)
         APIManager.shared.getUsers { [weak self] persons in
             DispatchQueue.main.async {
                 self?.persons = persons
                 self?.tableView.reloadData()
-                self?.stopActivityIndicator()
+                self?.activityIndicator.stopActivityIndicator(self!.view)
             }
         }
     }
@@ -75,6 +55,6 @@ extension PersonsViewController {
     func setUI() {
         self.tableView.register(PersonsViewCell.self, forCellReuseIdentifier: PersonsViewCell.reuseId)
             fetchPersons()
-        setupActivityIndicator()
+        activityIndicator.setupActivityIndicator(view)
     }
 }

@@ -6,15 +6,12 @@
 //
 
 import UIKit
+import SnapKit
 
 class ContactsViewController: UITableViewController {
         
     private let detailsViewController = ContactDetailsViewController()
-    private let activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.style = .large
-        return activityIndicator
-    }()
+    private let activityIndicator = ActivityIndicatorView()
     
     private var contactList: [Contact] = []
     private var images: [UIImage] = []
@@ -32,11 +29,11 @@ class ContactsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ContactsViewCell.reuseId, for: indexPath) as! ContactsViewCell
 
         let contact = contactList[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = contact.surname
-        content.secondaryText = contact.name
-        
-        cell.contentConfiguration = content
+//        var content = cell.defaultContentConfiguration()
+//        content.text = contact.surname
+//        content.secondaryText = contact.name
+//
+//        cell.contentConfiguration = content
         return cell
     }
     
@@ -55,35 +52,19 @@ class ContactsViewController: UITableViewController {
 
 extension ContactsViewController {
     
-    private func setupActivityIndicator() {
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-    }
-    
-    private func startActivityIndicator() {
-        activityIndicator.startAnimating()
-        view.isUserInteractionEnabled = false
-    }
-    
-    private func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
-        view.isUserInteractionEnabled = true
-    }
-    
     private func getContactList() {
-        for _ in 0...20 {
+        for _ in 0...10 {
             self.contactList.append(Contact.init())
         }
     }
     
     private func setImages() {
-        startActivityIndicator()
+        activityIndicator.startActivityIndicator(view)
         for _ in 0..<contactList.count {
             APIManager.shared.getImage { [weak self] image in
                 DispatchQueue.main.async {
                     self?.images.append(image)
-                    self?.stopActivityIndicator()
+                    self?.activityIndicator.stopActivityIndicator(self!.view)
                 }
             }
         }
@@ -91,7 +72,7 @@ extension ContactsViewController {
     
     private func setUI() {
         self.tableView.register(ContactsViewCell.self, forCellReuseIdentifier: ContactsViewCell.reuseId)
-        setupActivityIndicator()
+        activityIndicator.setupActivityIndicator(view)
         getContactList()
         setImages()
     }
