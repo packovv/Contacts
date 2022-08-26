@@ -9,6 +9,7 @@ import UIKit
 
 class ContactsViewController: UITableViewController {
         
+    private let detailsViewController = ContactDetailsViewController()
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = .large
@@ -37,6 +38,10 @@ class ContactsViewController: UITableViewController {
         
         cell.contentConfiguration = content
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        show(detailsViewController, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,6 +91,7 @@ extension ContactsViewController {
     
     private func setUI() {
         self.tableView.register(ContactsViewCell.self, forCellReuseIdentifier: ContactsViewCell.reuseId)
+        setupActivityIndicator()
         getContactList()
         setImages()
     }
