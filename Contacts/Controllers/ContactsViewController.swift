@@ -6,22 +6,19 @@
 //
 
 import UIKit
+import SnapKit
 
 class ContactsViewController: UITableViewController {
         
-    private let activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.style = .large
-        return activityIndicator
-    }()
+    private let detailsViewController = ContactDetailsViewController()
+    private let activityIndicator = ActivityIndicatorView()
     
     private var contactList: [Contact] = []
     private var images: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getContactList()
-        setImages()
+        setUI()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,15 +26,19 @@ class ContactsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ContactsViewCell.reuseId, for: indexPath) as! ContactsViewCell
 
         let contact = contactList[indexPath.row]
         var content = cell.defaultContentConfiguration()
         content.text = contact.surname
         content.secondaryText = contact.name
-        
         cell.contentConfiguration = content
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        show(detailsViewController, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,22 +52,6 @@ class ContactsViewController: UITableViewController {
 
 extension ContactsViewController {
     
-    private func setupActivityIndicator() {
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-    }
-    
-    private func startActivityIndicator() {
-        activityIndicator.startAnimating()
-        view.isUserInteractionEnabled = false
-    }
-    
-    private func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
-        view.isUserInteractionEnabled = true
-    }
-    
     private func getContactList() {
         for _ in 0...20 {
             self.contactList.append(Contact.init())
@@ -74,14 +59,21 @@ extension ContactsViewController {
     }
     
     private func setImages() {
-        startActivityIndicator()
+        activityIndicator.startActivityIndicator(view)
         for _ in 0..<contactList.count {
             APIManager.shared.getImage { [weak self] image in
                 DispatchQueue.main.async {
                     self?.images.append(image)
-                    self?.stopActivityIndicator()
+                    self?.activityIndicator.stopActivityIndicator(self!.view)
                 }
             }
         }
+    }
+    
+    private func setUI() {
+        self.tableView.register(ContactsViewCell.self, forCellReuseIdentifier: ContactsViewCell.reuseId)
+        activityIndicator.setupActivityIndicator(view)
+        getContactList()
+        setImages()
     }
 }

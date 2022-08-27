@@ -6,20 +6,17 @@
 //
 
 import UIKit
+import SnapKit
 
 class PersonsViewController: UITableViewController {
-
-    private let activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.style = .large
-        return activityIndicator
-    }()
+    
+    private let activityIndicator = ActivityIndicatorView()
     
     private var persons: Persons = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchPersons()
+        setUI()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,31 +38,24 @@ class PersonsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    private func setupActivityIndicator() {
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
-    }
-    
-    private func startActivityIndicator() {
-        activityIndicator.startAnimating()
-        view.isUserInteractionEnabled = false
-    }
-    
-    private func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
-        view.isUserInteractionEnabled = true
-    }
+}
+
+extension PersonsViewController {
     
     private func fetchPersons() {
-        startActivityIndicator()
+        activityIndicator.startActivityIndicator(view)
         APIManager.shared.getUsers { [weak self] persons in
             DispatchQueue.main.async {
                 self?.persons = persons
                 self?.tableView.reloadData()
-                self?.stopActivityIndicator()
+                self?.activityIndicator.stopActivityIndicator(self!.view)
             }
         }
+    }
+    
+    func setUI() {
+        self.tableView.register(PersonsViewCell.self, forCellReuseIdentifier: PersonsViewCell.reuseId)
+            fetchPersons()
+        activityIndicator.setupActivityIndicator(view)
     }
 }
