@@ -44,7 +44,7 @@ extension PersonsViewController {
     
     private func fetchPersons() {
         activityIndicator.startActivityIndicator(view)
-        APIManager.shared.getUsers { [weak self] persons in
+        APIManager.shared.fetchPersons { [weak self] persons in
             DispatchQueue.main.async {
                 self?.persons = persons
                 self?.tableView.reloadData()
