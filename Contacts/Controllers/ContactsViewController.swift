@@ -38,7 +38,7 @@ class ContactsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        show(detailsViewController, sender: nil)
+        show(detailsViewController, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

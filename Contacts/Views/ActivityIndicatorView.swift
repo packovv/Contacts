@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ActivityIndicatorView: UIActivityIndicatorView {
+final class ActivityIndicatorView: UIActivityIndicatorView {
 
     let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()

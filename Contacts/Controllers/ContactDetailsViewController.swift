@@ -6,17 +6,12 @@
 //
 
 import UIKit
+import SnapKit
 
-final class ContactDetailsViewController: UIViewController {
-
-    @IBOutlet weak var contactImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var surnameLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+class ContactDetailsViewController: UIViewController {
     
-    var contact: Contact!
-    var image: UIImage = UIImage(systemName: "bookmark")!
+    var contact = Contact()
+    var image = UIImage(systemName: "bookmark")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +19,66 @@ final class ContactDetailsViewController: UIViewController {
     }
     
     private func setUI() {
+        let contactImage: UIImageView = {
+            let contactImage = UIImageView()
+            view.addSubview(contactImage)
+            contactImage.snp.makeConstraints { maker in
+                maker.width.equalTo(280)
+                maker.height.equalTo(280)
+                maker.centerX.equalToSuperview()
+                maker.top.equalToSuperview().inset(100)
+            }
+            return contactImage
+        }()
+        
+        let nameLabel: UILabel = {
+            let nameLabel = UILabel()
+            view.addSubview(nameLabel)
+            nameLabel.snp.makeConstraints { maker in
+                maker.width.equalTo(280)
+                maker.height.equalTo(280)
+                maker.centerX.equalToSuperview()
+                maker.top.equalTo(contactImage).inset(160)
+            }
+            return nameLabel
+        }()
+        
+        let surnameLabel: UILabel = {
+            let surnameLabel = UILabel()
+            view.addSubview(surnameLabel)
+            surnameLabel.snp.makeConstraints { maker in
+                maker.width.equalTo(280)
+                maker.height.equalTo(280)
+                maker.centerX.equalToSuperview()
+                maker.top.equalTo(nameLabel).inset(30)
+            }
+            return surnameLabel
+        }()
+        
+        let phoneLabel: UILabel = {
+            let phoneLabel = UILabel()
+            view.addSubview(phoneLabel)
+            phoneLabel.snp.makeConstraints { maker in
+                maker.width.equalTo(280)
+                maker.height.equalTo(280)
+                maker.centerX.equalToSuperview()
+                maker.top.equalTo(surnameLabel).inset(30)
+            }
+            return phoneLabel
+        }()
+        
+        let emailLabel: UILabel = {
+            let emailLabel = UILabel()
+            view.addSubview(emailLabel)
+            emailLabel.snp.makeConstraints { maker in
+                maker.width.equalTo(280)
+                maker.height.equalTo(280)
+                maker.centerX.equalToSuperview()
+                maker.top.equalTo(phoneLabel).inset(30)
+            }
+            return emailLabel
+        }()
+        
         contactImage.image = image
         nameLabel.text = contact.name
         surnameLabel.text = contact.surname

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContactsViewCell: UITableViewCell {
+final class ContactsViewCell: UITableViewCell {
 
     static let reuseId: String = "contactsViewCell"
     
