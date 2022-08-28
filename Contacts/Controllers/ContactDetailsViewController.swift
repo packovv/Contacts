@@ -10,11 +10,22 @@ import SnapKit
 
 class ContactDetailsViewController: UIViewController {
     
-    var contact = Contact()
-    var image = UIImage(systemName: "bookmark")!
+    var selfContact = Contact()
+    var selfImage = UIImage(systemName: "bookmark")!
+    
+    init(contact: Contact, image: UIImage) {
+        selfContact = contact
+        selfImage = image
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setUI()
     }
     
@@ -79,10 +90,10 @@ class ContactDetailsViewController: UIViewController {
             return emailLabel
         }()
         
-        contactImage.image = image
-        nameLabel.text = contact.name
-        surnameLabel.text = contact.surname
-        phoneLabel.text = contact.phoneNumber
-        emailLabel.text = contact.email
+        contactImage.image = selfImage
+        nameLabel.text = selfContact.name
+        surnameLabel.text = selfContact.surname
+        phoneLabel.text = selfContact.phoneNumber
+        emailLabel.text = selfContact.email
     }
 }

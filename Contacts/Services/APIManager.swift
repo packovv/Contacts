@@ -25,19 +25,9 @@ final class APIManager {
         task.resume()
     }
     
-    func getImage(complition: @escaping (UIImage) -> Void) {
-
+    func fetchImage() -> Data? {
         let api = "https://picsum.photos/280/280"
-        guard let url = URL(string: api) else { fatalError("doesn't get image from api") }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { data, response, error in
-            if let data = data, error == nil {
-                complition(UIImage(data: data)!)
-            } else {
-                complition(UIImage(systemName: "bookmark")!)
-            }
-
-        }
-        task.resume()
+        guard let url = URL(string: api) else { return nil }
+        return try? Data(contentsOf: url)
     }
 }
