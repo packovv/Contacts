@@ -8,68 +8,13 @@
 import Foundation
 import UIKit
 
-enum APIType {
-    case login
-    case getUsers
-    case getPosts
-    case getAlbums
-    case getImage
-    
-    var baseURL: String {
-        return "https://jsonplaceholder.typicode.com/"
-    }
-    var imageURL: String {
-        return "https://picsum.photos/280/280"
-    }
-    
-    var header: [String: String] {
-        switch self {
-        case .login:
-            return ["authToken": "123456"]
-        default:
-            return [:]
-        }
-    }
-    
-    var path: String {
-        switch self {
-        case .login: return "login"
-        case .getUsers: return "users"
-        case .getPosts: return "posts"
-        case .getAlbums: return "albums"
-        case .getImage: return "image"
-        }
-    }
-    
-    var request: URLRequest {
-        let url = URL(string: path, relativeTo: URL(string: baseURL)!)!
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = header
-        
-        switch self {
-        case .login:
-            request.httpMethod = "POST"
-            return request
-        default:
-            request.httpMethod = "GET"
-            return request
-        }
-    }
-    
-    var imageRequest: URLRequest {
-        let url = URL(string: path, relativeTo: URL(string: imageURL)!)!
-        var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = header
-        request.httpMethod = "GET"
-        return request
-    }
-}
-
 final class APIManager {
     static let shared = APIManager()
     
-    func getUsers(complition: @escaping (Persons) -> Void) {
-        let request = APIType.getUsers.request
+    func fetchPersons(complition: @escaping (Persons) -> Void) {
+        let api = "https://jsonplaceholder.typicode.com/"
+        guard let url = URL(string: "users", relativeTo: URL(string: api)) else { return }
+        let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data, let persons = try? JSONDecoder().decode(Persons.self, from: data) {
                 complition(persons)
@@ -80,19 +25,9 @@ final class APIManager {
         task.resume()
     }
     
-    func getImage(complition: @escaping (UIImage) -> Void) {
-
+    func fetchImage() -> Data? {
         let api = "https://picsum.photos/280/280"
-        guard let url = URL(string: api) else { fatalError("doesn't get image from api") }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { data, response, error in
-            if let data = data, error == nil {
-                complition(UIImage(data: data)!)
-            } else {
-                complition(UIImage(systemName: "bookmark")!)
-            }
-
-        }
-        task.resume()
+        guard let url = URL(string: api) else { return nil }
+        return try? Data(contentsOf: url)
     }
 }

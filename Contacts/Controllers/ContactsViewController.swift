@@ -10,7 +10,6 @@ import SnapKit
 
 class ContactsViewController: UITableViewController {
         
-    private let detailsViewController = ContactDetailsViewController()
     private let activityIndicator = ActivityIndicatorView()
     
     private var contactList: [Contact] = []
@@ -38,22 +37,15 @@ class ContactsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsViewController = ContactDetailsViewController(contact: contactList[indexPath.row], image: images[indexPath.row])
         show(detailsViewController, sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let vc = segue.destination as? ContactDetailsViewController else { return }
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        let contact = contactList[indexPath.row]
-        vc.contact = contact
-        vc.image = images[indexPath.row]
     }
 }
 
 extension ContactsViewController {
     
     private func getContactList() {
-        for _ in 0...20 {
+        for _ in 0..<20 {
             self.contactList.append(Contact.init())
         }
     }
@@ -61,10 +53,11 @@ extension ContactsViewController {
     private func setImages() {
         activityIndicator.startActivityIndicator(view)
         for _ in 0..<contactList.count {
-            APIManager.shared.getImage { [weak self] image in
+            DispatchQueue.global().async {
+                guard let imageData = APIManager.shared.fetchImage() else { return }
                 DispatchQueue.main.async {
-                    self?.images.append(image)
-                    self?.activityIndicator.stopActivityIndicator(self!.view)
+                    self.images.append(UIImage(data: imageData)!)
+                    self.activityIndicator.stopActivityIndicator(self.view)
                 }
             }
         }
