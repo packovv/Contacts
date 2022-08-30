@@ -45,9 +45,9 @@ class ContactDetailsViewController: UIViewController {
             view.addSubview(nameLabel)
             nameLabel.snp.makeConstraints { maker in
                 maker.width.equalTo(280)
-                maker.height.equalTo(280)
+                maker.height.equalTo(16)
                 maker.centerX.equalToSuperview()
-                maker.top.equalTo(contactImage).inset(160)
+                maker.top.equalTo(contactImage).inset(300)
             }
             return nameLabel
         }()
@@ -57,7 +57,7 @@ class ContactDetailsViewController: UIViewController {
             view.addSubview(surnameLabel)
             surnameLabel.snp.makeConstraints { maker in
                 maker.width.equalTo(280)
-                maker.height.equalTo(280)
+                maker.height.equalTo(16)
                 maker.centerX.equalToSuperview()
                 maker.top.equalTo(nameLabel).inset(30)
             }
@@ -69,7 +69,7 @@ class ContactDetailsViewController: UIViewController {
             view.addSubview(phoneLabel)
             phoneLabel.snp.makeConstraints { maker in
                 maker.width.equalTo(280)
-                maker.height.equalTo(280)
+                maker.height.equalTo(16)
                 maker.centerX.equalToSuperview()
                 maker.top.equalTo(surnameLabel).inset(30)
             }
@@ -81,7 +81,7 @@ class ContactDetailsViewController: UIViewController {
             view.addSubview(emailLabel)
             emailLabel.snp.makeConstraints { maker in
                 maker.width.equalTo(280)
-                maker.height.equalTo(280)
+                maker.height.equalTo(16)
                 maker.centerX.equalToSuperview()
                 maker.top.equalTo(phoneLabel).inset(30)
             }

@@ -30,7 +30,8 @@ class TabBarController: UITabBarController {
         viewControllers = [
             createNavigaionController(for: ContactsViewController(), title: NSLocalizedString("Contacts", comment: ""), image: UIImage(systemName: "magazine.fill")!),
             createNavigaionController(for: PersonsViewController(), title: NSLocalizedString("Persons", comment: ""), image:
-                UIImage(systemName: "person.fill")!)
+                UIImage(systemName: "person.fill")!),
+            createNavigaionController(for: AboutMeViewController(), title: NSLocalizedString("About Me", comment: ""), image: UIImage(systemName: "person.2.circle.fill")!)
         ]
     }
     

@@ -13,6 +13,7 @@
 		846EB96428B947B1000FCB5B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846EB96328B947B1000FCB5B /* ActivityIndicatorView.swift */; };
 		849F453D28A8256200F57872 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F453C28A8256200F57872 /* TabBarController.swift */; };
 		849F453F28A82E7600F57872 /* ContactsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F453E28A82E7600F57872 /* ContactsViewCell.swift */; };
+		84A2BDAA28BE766500550428 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2BDA928BE766500550428 /* AboutMeViewController.swift */; };
 		84A948AD282FAF9A002E0612 /* Randomizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A948AC282FAF9A002E0612 /* Randomizer.swift */; };
 		84BAFBA027B2D6E800264608 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BAFB9F27B2D6E800264608 /* AppDelegate.swift */; };
 		84BAFBA227B2D6E800264608 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BAFBA127B2D6E800264608 /* SceneDelegate.swift */; };
@@ -35,6 +36,7 @@
 		846EB96328B947B1000FCB5B /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		849F453C28A8256200F57872 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		849F453E28A82E7600F57872 /* ContactsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewCell.swift; sourceTree = "<group>"; };
+		84A2BDA928BE766500550428 /* AboutMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
 		84A948AC282FAF9A002E0612 /* Randomizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Randomizer.swift; sourceTree = "<group>"; };
 		84BAFB9C27B2D6E800264608 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BAFB9F27B2D6E800264608 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				8462905A2885D4C1001F59D7 /* Cells */,
+				84A2BDA928BE766500550428 /* AboutMeViewController.swift */,
 				84BAFBB527B2D74F00264608 /* ContactsViewController.swift */,
 				84BAFBB927B2D78C00264608 /* ContactDetailsViewController.swift */,
 				84BAFBB727B2D76600264608 /* PersonsViewController.swift */,
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BAFBBA27B2D78C00264608 /* ContactDetailsViewController.swift in Sources */,
+				84A2BDAA28BE766500550428 /* AboutMeViewController.swift in Sources */,
 				849F453F28A82E7600F57872 /* ContactsViewCell.swift in Sources */,
 				84BAFBBD27B2D7B900264608 /* DataManager.swift in Sources */,
 				8401B00628708955000B50B3 /* APIManager.swift in Sources */,
