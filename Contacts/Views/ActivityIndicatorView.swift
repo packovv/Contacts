@@ -12,6 +12,7 @@ final class ActivityIndicatorView: UIActivityIndicatorView {
     let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .white
         activityIndicator.style = .large
         return activityIndicator
     }()

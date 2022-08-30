@@ -9,11 +9,8 @@ import UIKit
 import SnapKit
 
 class ContactsViewController: UITableViewController {
-        
-    private let activityIndicator = ActivityIndicatorView()
     
     private var contactList: [Contact] = []
-    private var images: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +34,7 @@ class ContactsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsViewController = ContactDetailsViewController(contact: contactList[indexPath.row], image: images[indexPath.row])
+        let detailsViewController = ContactDetailsViewController(contact: contactList[indexPath.row])
         show(detailsViewController, sender: nil)
     }
 }
@@ -50,23 +47,8 @@ extension ContactsViewController {
         }
     }
     
-    private func setImages() {
-        activityIndicator.startActivityIndicator(view)
-        for _ in 0..<contactList.count {
-            DispatchQueue.global().async {
-                guard let imageData = APIManager.shared.fetchImage() else { return }
-                DispatchQueue.main.async {
-                    self.images.append(UIImage(data: imageData)!)
-                    self.activityIndicator.stopActivityIndicator(self.view)
-                }
-            }
-        }
-    }
-    
     private func setUI() {
         self.tableView.register(ContactsViewCell.self, forCellReuseIdentifier: ContactsViewCell.reuseId)
-        activityIndicator.setupActivityIndicator(view)
         getContactList()
-        setImages()
     }
 }

@@ -10,12 +10,13 @@ import SnapKit
 
 class ContactDetailsViewController: UIViewController {
     
-    var selfContact = Contact()
-    var selfImage = UIImage(systemName: "bookmark")!
+    private let activityIndicator = ActivityIndicatorView()
+    private let contactImage = UIImageView()
     
-    init(contact: Contact, image: UIImage) {
+    var selfContact: Contact!
+    
+    init(contact: Contact) {
         selfContact = contact
-        selfImage = image
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -27,20 +28,17 @@ class ContactDetailsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUI()
+        fetchImage()
     }
     
     private func setUI() {
-        let contactImage: UIImageView = {
-            let contactImage = UIImageView()
-            view.addSubview(contactImage)
-            contactImage.snp.makeConstraints { maker in
-                maker.width.equalTo(280)
-                maker.height.equalTo(280)
-                maker.centerX.equalToSuperview()
-                maker.top.equalToSuperview().inset(100)
-            }
-            return contactImage
-        }()
+        view.addSubview(contactImage)
+        contactImage.snp.makeConstraints { maker in
+            maker.width.equalTo(280)
+            maker.height.equalTo(280)
+            maker.centerX.equalToSuperview()
+            maker.top.equalToSuperview().inset(100)
+        }
         
         let nameLabel: UILabel = {
             let nameLabel = UILabel()
@@ -90,10 +88,22 @@ class ContactDetailsViewController: UIViewController {
             return emailLabel
         }()
         
-        contactImage.image = selfImage
+//        contactImage.image = selfImage ?? UIImage(systemName: "bookmark")!
+//        contactImage.image = selfImage
         nameLabel.text = selfContact.name
         surnameLabel.text = selfContact.surname
         phoneLabel.text = selfContact.phoneNumber
         emailLabel.text = selfContact.email
+    }
+    
+    private func fetchImage() {
+        activityIndicator.startActivityIndicator(contactImage as UIView)
+        DispatchQueue.global().async {
+            guard let imageData = APIManager.shared.fetchImage() else { return }
+            DispatchQueue.main.async {
+                self.contactImage.image = UIImage(data: imageData)
+                self.activityIndicator.stopActivityIndicator(self.view as UIView)
+            }
+        }
     }
 }
