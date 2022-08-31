@@ -74,7 +74,7 @@ class AboutMeViewController: UIViewController {
         imageView.image = UIImage(named: "me")
         nameLabel.text = "Name: Pavel"
         hobbyLabel.text = "Hobby: yes"
-        workLabel.text = "Work: looking for"
+        workLabel.text = "Job: looking for"
     }
     
     private func setGradient() {
