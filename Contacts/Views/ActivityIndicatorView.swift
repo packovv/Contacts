@@ -12,20 +12,16 @@ final class ActivityIndicatorView: UIActivityIndicatorView {
     let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = .white
         activityIndicator.style = .large
         return activityIndicator
     }()
     
-    func setupActivityIndicator(_ view: UIView) {
+    func startActivityIndicator(_ view: UIView) {
         view.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints { maker in
             maker.centerX.equalToSuperview()
             maker.centerY.equalToSuperview()
         }
-    }
-    
-    func startActivityIndicator(_ view: UIView) {
         activityIndicator.startAnimating()
         view.isUserInteractionEnabled = false
     }

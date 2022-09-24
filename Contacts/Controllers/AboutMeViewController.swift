@@ -18,12 +18,25 @@ class AboutMeViewController: UIViewController {
     private func setupUI() {
         setGradient()
         
+        let _: UIView = {
+            let viewImage = UIView()
+            viewImage.backgroundColor = .white
+            viewImage.layer.cornerRadius = 20
+            view.addSubview(viewImage)
+            viewImage.snp.makeConstraints { maker in
+                maker.width.equalTo(280)
+                maker.height.equalTo(370)
+                maker.centerX.equalToSuperview()
+                maker.top.equalToSuperview().inset(110)
+            }
+            return viewImage
+        }()
+        
         let imageView: UIImageView = {
             let imageView = UIImageView()
             view.addSubview(imageView)
-            imageView.layer.cornerRadius = 10
             imageView.snp.makeConstraints { maker in
-                maker.width.equalTo(350)
+                maker.width.equalTo(280)
                 maker.height.equalTo(350)
                 maker.centerX.equalToSuperview()
                 maker.top.equalToSuperview().inset(120)
@@ -32,6 +45,21 @@ class AboutMeViewController: UIViewController {
         }()
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
         
+        let _: UIView = {
+            let textView = UIView()
+            textView.backgroundColor = .white
+            view.addSubview(textView)
+            textView.snp.makeConstraints { maker in
+                maker.height.equalTo(90)
+//                maker.centerX.equalToSuperview()
+                maker.top.equalTo(imageView).inset(365)
+                maker.right.equalToSuperview().inset(16)
+                maker.left.equalToSuperview().inset(16)
+            }
+            textView.layer.cornerRadius = 20
+            return textView
+        }()
+        
         let nameLabel: UILabel = {
             let nameLabel = UILabel()
             view.addSubview(nameLabel)
@@ -39,8 +67,8 @@ class AboutMeViewController: UIViewController {
                 maker.width.equalTo(100)
                 maker.height.equalTo(20)
                 maker.centerX.equalToSuperview()
-                maker.top.equalTo(imageView).inset(360)
-                maker.right.equalToSuperview().inset(20)
+                maker.top.equalTo(imageView).inset(370)
+                maker.right.equalToSuperview().inset(30)
             }
             return nameLabel
         }()
@@ -53,7 +81,7 @@ class AboutMeViewController: UIViewController {
                 maker.height.equalTo(20)
                 maker.centerX.equalToSuperview()
                 maker.top.equalTo(nameLabel).inset(30)
-                maker.right.equalToSuperview().inset(20)
+                maker.right.equalToSuperview().inset(30)
             }
             return hobbyLabel
         }()
@@ -66,7 +94,7 @@ class AboutMeViewController: UIViewController {
                 maker.height.equalTo(20)
                 maker.centerX.equalToSuperview()
                 maker.top.equalTo(hobbyLabel).inset(30)
-                maker.right.equalToSuperview().inset(20)
+                maker.right.equalToSuperview().inset(30)
             }
             return workLabel
         }()
@@ -74,7 +102,7 @@ class AboutMeViewController: UIViewController {
         imageView.image = UIImage(named: "me")
         nameLabel.text = "Name: Pavel"
         hobbyLabel.text = "Hobby: yes"
-        workLabel.text = "Work: looking for"
+        workLabel.text = "Job: looking for"
     }
     
     private func setGradient() {
@@ -85,3 +113,5 @@ class AboutMeViewController: UIViewController {
     }
 
 }
+
+
