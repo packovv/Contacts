@@ -33,6 +33,7 @@ class ContactDetailsViewController: UIViewController {
     
     private func setUI() {
         view.addSubview(contactImage)
+        contactImage.contentMode = .scaleAspectFit
         contactImage.snp.makeConstraints { maker in
             maker.width.equalTo(280)
             maker.height.equalTo(280)
@@ -87,9 +88,7 @@ class ContactDetailsViewController: UIViewController {
             }
             return emailLabel
         }()
-        
-//        contactImage.image = selfImage ?? UIImage(systemName: "bookmark")!
-//        contactImage.image = selfImage
+                            
         nameLabel.text = selfContact.name
         surnameLabel.text = selfContact.surname
         phoneLabel.text = selfContact.phoneNumber
@@ -97,12 +96,12 @@ class ContactDetailsViewController: UIViewController {
     }
     
     private func fetchImage() {
-        activityIndicator.startActivityIndicator(contactImage as UIView)
+        activityIndicator.startActivityIndicator(contactImage)
         DispatchQueue.global().async {
-            guard let imageData = APIManager.shared.fetchImage() else { return }
+            guard let imageData = APIManager.shared.fetchImage(pic: pics.cat2) else { return }
             DispatchQueue.main.async {
                 self.contactImage.image = UIImage(data: imageData)
-                self.activityIndicator.stopActivityIndicator(self.view as UIView)
+                self.activityIndicator.stopActivityIndicator(self.contactImage)
             }
         }
     }

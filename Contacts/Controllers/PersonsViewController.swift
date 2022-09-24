@@ -56,6 +56,5 @@ extension PersonsViewController {
     func setUI() {
         self.tableView.register(PersonsViewCell.self, forCellReuseIdentifier: PersonsViewCell.reuseId)
             fetchPersons()
-        activityIndicator.setupActivityIndicator(view)
     }
 }
