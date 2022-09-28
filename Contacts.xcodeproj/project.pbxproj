@@ -96,10 +96,44 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		8462905A2885D4C1001F59D7 /* Cells */ = {
+		8404369528E473020032E36D /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				8404369628E473170032E36D /* Cells */,
+				84BAFBB527B2D74F00264608 /* ContactsViewController.swift */,
+				84BAFBB927B2D78C00264608 /* ContactDetailsViewController.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		8404369628E473170032E36D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				849F453E28A82E7600F57872 /* ContactsViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8404369728E4734C0032E36D /* Persons */ = {
+			isa = PBXGroup;
+			children = (
+				8462905A2885D4C1001F59D7 /* Cells */,
+				84BAFBB727B2D76600264608 /* PersonsViewController.swift */,
+			);
+			path = Persons;
+			sourceTree = "<group>";
+		};
+		8404369828E473650032E36D /* AboutMe */ = {
+			isa = PBXGroup;
+			children = (
+				84A2BDA928BE766500550428 /* AboutMeViewController.swift */,
+			);
+			path = AboutMe;
+			sourceTree = "<group>";
+		};
+		8462905A2885D4C1001F59D7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
 				846290582885D4B9001F59D7 /* PersonsViewCell.swift */,
 			);
 			path = Cells;
@@ -157,11 +191,9 @@
 		84BAFBBB27B2D79300264608 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8462905A2885D4C1001F59D7 /* Cells */,
-				84A2BDA928BE766500550428 /* AboutMeViewController.swift */,
-				84BAFBB527B2D74F00264608 /* ContactsViewController.swift */,
-				84BAFBB927B2D78C00264608 /* ContactDetailsViewController.swift */,
-				84BAFBB727B2D76600264608 /* PersonsViewController.swift */,
+				8404369828E473650032E36D /* AboutMe */,
+				8404369528E473020032E36D /* Contacts */,
+				8404369728E4734C0032E36D /* Persons */,
 				849F453C28A8256200F57872 /* TabBarController.swift */,
 			);
 			path = Controllers;

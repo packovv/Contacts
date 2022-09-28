@@ -10,6 +10,7 @@ import SnapKit
 
 class ContactsViewController: UITableViewController {
     
+    private var entities: [ContactEntity] = []
     private var contactList: [Contact] = []
     
     override func viewDidLoad() {
@@ -37,8 +38,36 @@ class ContactsViewController: UITableViewController {
         let detailsViewController = ContactDetailsViewController(contact: contactList[indexPath.row])
         show(detailsViewController, sender: nil)
     }
+    
+    @objc private func addNewTask() {
+
+        
+        
+    }
+    
+    private func save(contactName: String) {
+        StorageManager.shared.save(name: "", surname: "", email: "", phone: "") { task in
+            self.entities.append(task)
+            self.tableView.insertRows(
+                at: [IndexPath(row: self.entities.count - 1, section: 0)],
+                with: .automatic
+            )
+        }
+    }
+
+    private func fetchData() {
+        StorageManager.shared.fetchData { result in
+            switch result {
+            case .success(let tasks):
+                self.entities = tasks
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
+// MARK: - UI
 extension ContactsViewController {
     
     private func getContactList() {
@@ -50,5 +79,14 @@ extension ContactsViewController {
     private func setUI() {
         self.tableView.register(ContactsViewCell.self, forCellReuseIdentifier: ContactsViewCell.reuseId)
         getContactList()
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addNewTask)
+        )
     }
 }

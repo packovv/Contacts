@@ -40,15 +40,21 @@ final class StorageManager {
         }
     }
     
-    func save(_ name: String, completion: (ContactEntity) -> Void) {
+    func save(name: String, surname: String, email: String, phone: String, completion: (ContactEntity) -> Void) {
         let entity = ContactEntity(context: viewContext)
         entity.name = name
+        entity.surname = surname
+        entity.email = email
+        entity.phone = phone
         completion(entity)
         saveContext()
     }
     
-    func edit(_ entity: ContactEntity, newName: String) {
+    func edit(_ entity: ContactEntity, newName: String?, newSurname: String?, newEmail: String?, newPhone: String?) {
         entity.name = newName
+        entity.surname = newSurname
+        entity.email = newEmail
+        entity.phone = newPhone
         saveContext()
     }
     
