@@ -9,9 +9,12 @@ import UIKit
 
 class AboutMeViewController: UIViewController {
     
+    private var photoName: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        randomPhoto()
         setupUI()
     }
     
@@ -27,7 +30,7 @@ class AboutMeViewController: UIViewController {
                 maker.width.equalTo(280)
                 maker.height.equalTo(370)
                 maker.centerX.equalToSuperview()
-                maker.top.equalToSuperview().inset(110)
+                maker.top.equalToSuperview().inset(130)
             }
             return viewImage
         }()
@@ -39,7 +42,7 @@ class AboutMeViewController: UIViewController {
                 maker.width.equalTo(280)
                 maker.height.equalTo(350)
                 maker.centerX.equalToSuperview()
-                maker.top.equalToSuperview().inset(120)
+                maker.top.equalToSuperview().inset(140)
             }
             return imageView
         }()
@@ -99,7 +102,7 @@ class AboutMeViewController: UIViewController {
             return workLabel
         }()
         
-        imageView.image = UIImage(named: "me")
+        imageView.image = UIImage(named: photoName)
         nameLabel.text = "Name: Pavel"
         hobbyLabel.text = "Hobby: yes"
         workLabel.text = "Job: looking for"
@@ -110,6 +113,19 @@ class AboutMeViewController: UIViewController {
         gradient.frame = view.bounds
         gradient.colors = [UIColor.green.cgColor, UIColor.white.cgColor]
         view.layer.insertSublayer(gradient, at: 0)
+    }
+    
+    private func randomPhoto() {
+        let random = Int.random(in: 0...1)
+        
+        switch random {
+        case 0:
+            photoName = "me"
+        case 1:
+            photoName = "me2"
+        default:
+            print("Error: \(#function)")
+        }
     }
 
 }

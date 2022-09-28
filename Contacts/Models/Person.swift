@@ -5,8 +5,6 @@
 //  Created by packovv on 02.07.2022.
 //
 
-import Foundation
-
 struct Person: Codable {
     let id: Int
     let name, username, email: String

@@ -5,8 +5,6 @@
 //  Created by packovv on 08.02.2022.
 //
 
-import Foundation
-
 struct Contact {
     let name: String
     let surname: String

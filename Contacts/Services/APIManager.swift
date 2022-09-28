@@ -15,6 +15,7 @@ enum pics: String {
 }
 
 final class APIManager {
+    
     static let shared = APIManager()
     
     func fetchPersons(complition: @escaping (Persons) -> Void) {
@@ -31,10 +32,10 @@ final class APIManager {
         task.resume()
     }
     
-    func fetchImage(pic: pics) -> Data? {
+    func fetchImage(pic: String) -> Data? {
 //        let api = "https://picsum.photos/280/280"
         let api = pic
-        guard let url = URL(string: api.rawValue) else { return nil }
+        guard let url = URL(string: api) else { return nil }
         return try? Data(contentsOf: url)
     }
 }
